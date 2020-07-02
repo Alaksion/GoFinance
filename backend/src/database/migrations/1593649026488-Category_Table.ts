@@ -1,39 +1,22 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { uuid } from 'uuidv4';
 
-export default class transactionTable1593549650565
-  implements MigrationInterface {
+export default class CategoryTable1593649026488 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.createTable(
       new Table({
-        name: 'transactions',
+        name: 'categories',
         columns: [
           {
             name: 'id',
             type: 'uuid',
-            generationStrategy: 'uuid',
             isPrimary: true,
+            generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
           },
           {
             name: 'title',
             type: 'varchar',
             isNullable: false,
-          },
-          {
-            name: 'value',
-            type: 'float',
-            isNullable: false,
-          },
-          {
-            name: 'type',
-            type: 'varchar',
-            isNullable: false,
-          },
-          {
-            name: 'categoryId',
-            type: 'uuid',
-            isNullable: true,
           },
           {
             name: 'createdAt',
@@ -51,6 +34,6 @@ export default class transactionTable1593549650565
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.dropTable('transactions');
+    queryRunner.dropTable('categories');
   }
 }

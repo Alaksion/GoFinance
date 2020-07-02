@@ -41,7 +41,7 @@ class CreateTransactionService {
         title,
         value,
         type,
-        categoryId: createdCategory.id,
+        category_id: createdCategory.id,
       });
       await transactionRepository.save(newTransaction);
       return newTransaction;
@@ -51,7 +51,7 @@ class CreateTransactionService {
       title,
       value,
       type,
-      categoryId: findCategory?.id,
+      category_id: findCategory?.id,
     });
 
     await transactionRepository.save(newTransaction);
