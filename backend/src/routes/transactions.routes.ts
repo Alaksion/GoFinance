@@ -17,10 +17,6 @@ transactionsRouter.get('/', async (request, response) => {
     relations: ['category'],
   });
 
-  if (transactions.length === 0) {
-    return response.json({ msg: 'No transactions available' });
-  }
-
   return response.json({ transactions, balance });
 });
 
