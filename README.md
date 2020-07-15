@@ -25,8 +25,20 @@ Após instalar o docker e se certificar que ele está funcionando normalmente pr
 ```sh
 docker run --name transaction_postgres -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres
 ```
-Esse comando irá criar o "local" aonde o nosso banco de dados ficará armazenado, após fazer essa configuração vá até o diretório backend pelo terminal e digite o comando
-abaixo, ele será responsável por configurar as tabelas do banco automaticamente.
+Ao executar esse comando será criado um container e será retornado um código contendo números e letras, anote esse código pois ele será importante para os próximos passos, porém caso esqueça o código ou não tenha anotado digite no terminal o comando abaixo, ele irá listar todos os container ativos na sua máquina, após isso copie
+o código novamente do container que você acabou de criar.
+```sh
+  docker ps -a
+```
+Com o código do container em mãos digite o comando abaixo no terminal para inicializar o seu container, sem esse procedimento o back-end não irá conseguir se conectar ao banco de dados.
+```sh
+  docker start codigo_do_container
+```
+Agora precisamos criar o nosso banco de dados, existem diversos programas que facilitam esse procedimento, nesse passo a passo estaremos utilizando o DBeaver que pode ser encontrado [Nesse link](https://dbeaver.io/). Faça o processo de instalação normal e aguarda até estar finalizado, se necessário reinicie o seu computador.
+Com o Dbeaver instalado faça exatamente os passos descritos abaixo, estarei disponibilizando uma série de imagens explicativas para te auxiliar.
+[Criando o banco com Dbeaver](https://imgur.com/a/DUNiUqC)
+
+Uma vez que o procedimento acima for completo vá no diretório backend pelo terminal e digite o comando abaixo, ele irá criar as tabelas automaticamente.
 ```sh
   yarn typeorm migration:run
 ```
@@ -38,6 +50,7 @@ E no diretório web digite
 ```sh
   yarn start
 ```
+E poderá usar a aplicação sem problemas :)
 
 
 
